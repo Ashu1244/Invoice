@@ -27,7 +27,7 @@ function App() {
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
   const [amount, setAmount] = useState("");
-  const [list, setList] = useState([ ]);
+  const [list, setList] = useState([]);
 
   const handlePrint = () => {
     window.print();
@@ -53,7 +53,14 @@ function App() {
               invoicedate={invoicedate}
               duedate={duedate}
             />
-            <Table description={description} quantity={quantity} price={price} amount={amount}/>
+            <Table
+              description={description}
+              quantity={quantity}
+              price={price}
+              amount={amount}
+              list={list}
+              setList={setList}
+            />
             <Notes notes={notes} />
 
             <Footer
@@ -256,6 +263,8 @@ function App() {
                   setPrice={setPrice}
                   amount={amount}
                   setAmount={setAmount}
+                  list={list}
+                  setList={setList}
                 />
               </article>
               <label htmlFor="notes">Additional notes</label>
