@@ -2,7 +2,7 @@
 export default function Dates({invoicenumber,invoicedate,duedate}){
     return (
       <>
-        <article className="my-5 flex items-end
+        <article className="mt-10 mb-14 flex items-end
       justify-end">
 <ul>
           <li className="p-1">
