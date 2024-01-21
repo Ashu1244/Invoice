@@ -20,20 +20,26 @@ export default function TableForm({
   // submit form function//
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newItems={
-      id:uuidv4(),
-      description,
-      quantity,
-      price,
-      amount,
+    if(!description || !quantity || !price){
+ alert("Please fill all the required fields")
     }
-    setDescription("");
-    setQuantity("")
-    setPrice("");
-    setAmount("")
-    setList([...list,newItems])
-    setIsEditing(false)
+    else{
+
+      const newItems={
+        id:uuidv4(),
+        description,
+        quantity,
+        price,
+        amount,
+      }
+      setDescription("");
+      setQuantity("")
+      setPrice("");
+      setAmount("")
+      setList([...list,newItems])
+      setIsEditing(false)
+    }
+
   };
   // calculate items amount function
   useEffect(() => {
@@ -157,7 +163,7 @@ export default function TableForm({
         </React.Fragment>
         ))}
         </table>
-        <div className="flex items-center">
+        <div>
           <h2 className=" flex items-end justify-end text-gray-800 text-4xl font-bold">Rs.{total.toLocaleString()}</h2>
         </div>
     </>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import Dates from "./components/Dates";
 import Footer from "./components/Footer";
 import Table from "./components/Table";
@@ -7,7 +7,7 @@ import Clientdetails from "./components/Clientdetails";
 import Maindetails from "./components/Maindetails";
 import Header from "./components/Header";
 import TableForm from "./components/TableForm";
-
+import ReactToPrint from "react-to-print";
 function App() {
   const [showInvoice, setShowInvoice] = useState(false);
   const [name, setName] = useState("");
@@ -29,6 +29,7 @@ function App() {
   const [amount, setAmount] = useState("");
   const [list, setList] = useState([]);
   const [total,setTotal]= useState([0]);
+  const componentsRef= useRef()
 
   const handlePrint = () => {
     window.print();
@@ -41,7 +42,14 @@ function App() {
     bg-white rounded shadow"
       >
         {showInvoice ? (
-          <div>
+          <>
+           <ReactToPrint trigger ={()=> <button className=" bg-green-600 ml-5 text-white font-bold py-2 px-8
+      rounded shadow border-2
+       border-black-500 
+       hover:bg-transparent hover:text-blue-500
+       transition-all duration-300">Print / Download</button>}
+          content={()=> componentsRef.current}/>
+          <div ref={componentsRef} className="p-5" >
             <Header handlePrint={handlePrint} />
 
             <Maindetails name={name} address={address} />
@@ -75,6 +83,7 @@ function App() {
               bankaccount={bankaccount}
               bankname={bankname}
             />
+          </div>
             <button
               onClick={() => setShowInvoice(false)}
               className=" mt-5 bg-red-400 text-white font-bold py-2 px-8
@@ -85,7 +94,11 @@ function App() {
             >
               Edit information
             </button>
-          </div>
+
+
+
+
+          </>
         ) : (
           <>
             <div className="flex flex-col justify-center">

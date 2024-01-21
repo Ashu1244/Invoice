@@ -14,7 +14,7 @@ export default function Header({ handlePrint }) {
             Invoicer
           </h2>
         </div>
-        <div>
+        {/*<div>
           <ul
             className="flex items-center justify-between
          flex-wrap"
@@ -54,7 +54,7 @@ export default function Header({ handlePrint }) {
               </button>
             </li>
           </ul>
-        </div>
+  </div> */}
       </header>
     </>
   );
